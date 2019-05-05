@@ -24,6 +24,26 @@ class Student(models.Model):
     student_class = models.CharField(max_length=20)
 
 
+    def change_student(self, student_id, student_name, student_school, student_avatar, student_email, student_class ):
+        student = Student.objects.get(student_id=student_id)
+        student.student_name = student_name
+        student.student_school = student_school
+        student.student_avatar = student_avatar
+        student.student_email = student_email
+        student.student_class = student_class
+        student.save()
+
+
+    def get_student_by_id(self, student_id):
+        student = Student.objects.get(studeng_id=student_id)
+        return student
+
+
+    def delete_by_id(self, student_id):
+        Student.objects.filter(student_id=student_id).delete()
+        return 'success'
+
+
     def __str__(self):
         dir = {}
         dir['student_name'] = self.student_name
