@@ -17,25 +17,7 @@ class Course(models.Model):
     course_school = models.CharField(max_length=20)
     course_teacher = models.CharField(max_length=20)
     course_classroom = models.CharField(max_length=20)
-
-    def get_course(self, course_id):
-        course = Course.objects.get(course_id=course_id)
-        return course
-
-
-    def delete_course(self, course_id):
-        Course.objects.filter(course_id=course_id).delete()
-        return 'success'
-
-
-    def update_sourse(self, course_id, course_name, course_school, course_teacher, course_classroom):
-        course = Course.objects.get(course_id=course_id)
-        course.course_name=course_name
-        course.course_school=course_school
-        course.course_teacher=course_teacher
-        course.course_classroom=course_classroom
-        course.save()
-
+    course_students = models.CharField(max_length=1000)
 
     def __str__(self):
         dir = {}
