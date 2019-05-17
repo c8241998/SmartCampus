@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from apps import account
+from apps.account import views as accountview
+from apps.student import views as student
+from django.conf.urls import url
+from apps.course import views as course
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', account.views.login),
-    path('register/', account.views.register),
+    path('login/', accountview.login),
+    path('register/', accountview.register),
+    path('student/create', student.create),
+    url(r'^student/(?P<id>\w+)/$', student.student,name="student"),
+    url(r'^course/(?P<id>\w+)/$', student.student, name="course"),
 ]
