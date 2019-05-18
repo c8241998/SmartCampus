@@ -8,7 +8,7 @@ def create(request):
         course_id = request.POST.get('course_id')
         course_name = request.POST.get('course_name')
         course_school = request.POST.get('course_school')
-        course_teacher = request.POST.get('course_school')
+        course_teacher = request.POST.get('course_teacher')
         course_classroom = request.POST.get('course_classroom')
         course_students = request.POST.get('course_students')
 
@@ -55,7 +55,7 @@ def course(request,id):
             return jsonRes('id_not_found', 404, {})
         else:
             course = models.Course.objects.get(course_id=id)
-            return jsonRes('success', 200, course)
+            return jsonRes('success', 200, str(course))
 
     if request.method == 'DELETE':
         exist = models.Course.objects.filter(course_id=id).exists()
@@ -64,3 +64,7 @@ def course(request,id):
         else:
             models.Course.objects.get(course_id=id).delete()
             return jsonRes('success', 200, {})
+
+
+def checkin(request, id):
+    image = request.POST.get('image')

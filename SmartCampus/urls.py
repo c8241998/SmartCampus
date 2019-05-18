@@ -25,6 +25,9 @@ urlpatterns = [
     path('login/', accountview.login),
     path('register/', accountview.register),
     path('student/create', student.create),
+    path('course/create', course.create),
     url(r'^student/(?P<id>\w+)/$', student.student,name="student"),
-    url(r'^course/(?P<id>\w+)/$', student.student, name="course"),
+    url(r'^student/(?P<id>\w+)/avatar$', student.student_avatar, name="student_avatar"),
+    url(r'^course/(?P<id>\w+)/$', course.course, name="course"),
+    url(r'^course/(?P<id>\w+)/checkin$', course.checkin, name='coursechecnin')
 ]

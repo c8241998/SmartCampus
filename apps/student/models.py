@@ -1,5 +1,5 @@
 from django.db import models
-
+import json
 # Create your models here.
 
 
@@ -48,4 +48,7 @@ class Student(models.Model):
         dir = {}
         dir['student_name'] = self.student_name
         dir['student_id'] = self.student_id
-        return dir
+        dir['student_school'] = self.student_school
+        dir['school_email'] = self.student_email
+        dir['school_class'] = self.student_class
+        return json.dumps(dir)

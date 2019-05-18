@@ -1,5 +1,6 @@
 from django.db import models
 from apps.student.models import *
+import json
 # Create your models here.
 
 
@@ -23,7 +24,11 @@ class Course(models.Model):
         dir = {}
         dir['course_name'] = self.course_name
         dir['course_id'] = self.course_id
-        return dir
+        dir['course_school'] = self.course_school
+        dir['course_teacher'] = self.course_teacher
+        dir['course_classroom'] = self.course_classroom
+        dir['course_students'] = self.course_students
+        return json.dumps(dir)
 
 
 class Course_student(models.Model):

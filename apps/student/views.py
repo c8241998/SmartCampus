@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from apps.student import models
 from util.json import jsonRes
+import base64
+from django.http import HttpResponse
 # Create your views here.
 
 
@@ -42,8 +44,10 @@ def student(request,id):
             student.student_name = student_name
             student.student_school = student_school
             student.student_avatar = student_avatar
-            student.student_email = student_email
-            student.student_class = student_class
+            if student_email:
+                student.student_email = student_email
+            if student_class:
+                student.student_class = student_class
             student.save()
             return jsonRes("success", 200, {})
 
@@ -53,7 +57,7 @@ def student(request,id):
             return jsonRes('id_not_found', 404, {})
         else:
             student = models.Student.objects.get(student_id=id)
-            return jsonRes('success', 200, student)
+            return jsonRes('success', 200, str(student))
 
     if request.method == 'DELETE':
         exist = models.Student.objects.filter(student_id=id).exists()
@@ -63,5 +67,15 @@ def student(request,id):
             models.Student.objects.get(student_id=id).delete()
             return jsonRes('success', 200, {})
 
+
+def student_avatar(request, id):
+    exist = models.Student.objects.filter(student_id=id).exists()
+    if not exist:
+        return jsonRes('id_not_found', 404, {})
+    else:
+        student = models.Student.objects.get(student_id=id)
+        avatar = student.student_avatar
+        img = base64.b64decode(avatar)
+        return HttpResponse(img, content_type="image/png")
 
 
