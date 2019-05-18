@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from util.json import jsonRes
 from apps.course import models
+from ai import face_det
 # Create your views here.
 
 def create(request):
@@ -68,3 +69,6 @@ def course(request,id):
 
 def checkin(request, id):
     image = request.POST.get('image')
+    face = face_det.Face()
+    res = face.get_all_matched_faces(image)
+    return res
