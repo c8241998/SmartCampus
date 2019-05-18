@@ -2,7 +2,7 @@ from PIL import Image
 import face_recognition
 import numpy as np
 import sys
-# sys.path.append('D:/GitHub/SmartCampus/ai/align')
+sys.path.append('./align')
 from ai.align.detector import detect_faces
 from ai.align.visualization_utils import show_results
 
