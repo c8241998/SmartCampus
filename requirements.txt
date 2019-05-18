@@ -4,3 +4,10 @@ PyMySQL==0.9.3
 pytz==2019.1
 sqlparse==0.3.0
 django-cors-headers==3.0.1
+Pillow==5.1.0
+face-recognition==1.2.3
+face-recognition-models==0.3.0
+dlib==19.17.0
+numpy==1.14.3
+torch==1.0.0
+torchvision==0.2.1
