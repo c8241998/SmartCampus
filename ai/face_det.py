@@ -2,9 +2,9 @@ from PIL import Image
 import face_recognition
 import numpy as np
 import sys
-sys.path.append('./align')
-from align.detector import detect_faces
-from align.visualization_utils import show_results
+# sys.path.append('D:/GitHub/SmartCampus/ai/align')
+from ai.align.detector import detect_faces
+from ai.align.visualization_utils import show_results
 
 class Face:
     """All tools related to face is wrapped in this class.
