@@ -1,11 +1,12 @@
 import numpy as np
+
+
+from ai.align.get_nets import PNet, RNet, ONet
+from ai.align.box_utils import nms, calibrate_box, get_image_boxes, convert_to_square
+from ai.align.first_stage import run_first_stage
+
 import torch
 from torch.autograd import Variable
-from get_nets import PNet, RNet, ONet
-from box_utils import nms, calibrate_box, get_image_boxes, convert_to_square
-from first_stage import run_first_stage
-
-
 def detect_faces(image, min_face_size = 20.0,
                  thresholds=[0.6, 0.7, 0.8],
                  nms_thresholds=[0.7, 0.7, 0.7]):
