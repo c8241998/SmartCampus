@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from util.json import jsonRes
 from apps.course import models
-from ai import face_det
 # Create your views here.
 
 def create(request):
